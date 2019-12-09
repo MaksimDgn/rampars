@@ -13,20 +13,39 @@ i = 0
 #soup.find_all("div", class="items tiles-view")
 div = soup.find("div", id="store_products")
 
-img = div.find_all('div', {"class": 'image'}, 'a')
+#img = div.find_all('div', {"class": 'image'}, 'a')
+img = div.find_all('div', {"class": 'title'}, 'a')
 price = div.find_all('div', {"class": 'price'})
-print(price)
+#print(price)
 
+USBdb = {'nameT':[], 'links':[], 'prices':[]}
 for t in img:
-    text = t.a.get('href')
-    lin = t.a.get_text()
-    print(text)
-    print(lin)
+    lin = t.a.get('href')
+    text = t.a.get_text()
+    USBdb['nameT'].append(text.strip())
+    USBdb['links'].append(lin)
+#    print(text)
+#    print(lin)
 
 
 for pr in price:
-    text = pr.get_text()
-    print(text)
+    priceUnit = pr.get_text()
+    USBdb['prices'].append(priceUnit.strip())
+#    print(priceUnit)
+
+
+#    print(" {} {} {}".format(outbd['nameT'], outbd['prices'], outbd['links']))
+#    print("{} {} ".format(USBdb['links'][i], USBdb['nameT'][i]))
+
+for outbd in USBdb['nameT']:
+    print('-'*10)
+    print(USBdb['links'][i])
+    print(USBdb['nameT'][i] )
+    print(USBdb['prices'][i])
+    i+=1
+print("total: %d"%i)
+
+
 # for tag in div.next_element:
 #     if tag is None:
 #         print(tag.name)
