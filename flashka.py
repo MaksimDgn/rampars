@@ -14,7 +14,9 @@ class Flashka:
         self.link = link
 
     def printInfo(self):
-        return  '{} {} {} {}'.format(self.name, self.size, self.price, self.link)
+        ss = '{} {} {} {}'.format(self.name, self.size, self.price, self.link)
+        return ss
+
     # def getName():
 
     # def getLink():
